@@ -294,6 +294,7 @@ table.rt tfoot td{font-weight:700;border-top:2px solid var(--brd2);background:va
       onkeydown="if(event.key==='Enter')doUnlock()">
     <div class="lock-err" id="lock-err"></div>
     <button class="lock-btn" onclick="doUnlock()">Entrar</button>
+    <button onclick="doForgotPwd()" style="background:none;border:none;color:#a0a0a8;font-size:12px;margin-top:14px;cursor:pointer;text-decoration:underline;">Esqueci a senha</button>
   </div>
 </div>
 
@@ -360,7 +361,12 @@ function savePwd(){
   closePwdModal();
   alert('Senha alterada com sucesso!');
 }
-/* ─────────────────────────────────────────── */
+function doForgotPwd(){
+  if(!confirm('Isso vai resetar sua senha para "1234".\n\nSeus dados financeiros NÃO serão apagados.\n\nContinuar?'))return;
+  localStorage.setItem(PWD_KEY,'1234');
+  alert('Senha resetada para 1234. Pode entrar!');
+}
+
 
 const SK='fin_v5';
 const MS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
